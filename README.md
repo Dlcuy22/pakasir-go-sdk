@@ -5,7 +5,6 @@ Supports QRIS and multi-bank Virtual Account.
 
 [Installation](#installation) · [Quick Start](#quick-start) · [Configuration](#configuration) · [Payment Methods](#payment-methods) · [API Reference](#api-reference)
 
----
 
 ## Installation
 
@@ -13,7 +12,6 @@ Supports QRIS and multi-bank Virtual Account.
 go get github.com/dlcuy22/pakasir-go-sdk
 ```
 
----
 
 ## Quick Start
 
@@ -51,8 +49,6 @@ func main() {
 }
 ```
 
----
-
 ## Configuration
 
 `NewClient` accepts a `Config` struct:
@@ -67,8 +63,6 @@ You can optionally set a custom HTTP client:
 ```go
 client.SetHTTPClient(&http.Client{Timeout: 10 * time.Second})
 ```
-
----
 
 ## Payment Methods
 
@@ -88,7 +82,6 @@ For more information about payment methods, please visit [Pakasir Biaya](https:/
 | Sampoerna VA     | `sampoerna_va`      | Rp2.000          | `PaymentMethodSampoernaVA`     |
 | Artha Graha VA   | `artha_graha_va`    | Rp2.000          | `PaymentMethodArthaGrahaVA`    |
 
----
 
 ## API Reference
 
@@ -108,8 +101,6 @@ payment, err := client.CreatePayment(ctx, pakasir.PaymentMethodQRIS, "ORDER-1234
 | `method`  | `PaymentMethod` | Payment method constant                                |
 | `orderID` | `string`        | Unique order ID (min 5 characters, URL-safe chars only) |
 | `amount`  | `int`           | Amount in Rupiah (min Rp500)                           |
-
----
 
 ### GetPaymentURL
 
@@ -144,7 +135,6 @@ detail, err := client.DetailPayment(ctx, "ORDER-12345", 100000)
 | `orderID` | `string`         | Order ID         |
 | `amount`  | `int`            | Amount in Rupiah |
 
----
 
 ### CancelPayment
 
@@ -154,7 +144,6 @@ Cancel an existing pending payment.
 canceled, err := client.CancelPayment(ctx, "ORDER-12345", 100000)
 ```
 
----
 
 ### SimulationPayment
 
@@ -164,7 +153,6 @@ Simulate a successful payment for testing in Sandbox mode.
 simulated, err := client.SimulationPayment(ctx, "ORDER-12345", 100000)
 ```
 
----
 
 ### WatchPayment
 
@@ -194,7 +182,6 @@ defer handle.Stop()
 | `OnStatusChange` | `func(PaymentPayload)`                  | -            | Callback on status change       |
 | `OnError`        | `func(error)`                           | -            | Callback on error               |
 
----
 
 ### PaymentPayload
 
@@ -217,7 +204,6 @@ type PaymentPayload struct {
 }
 ```
 
----
 
 ## Contributing
 
